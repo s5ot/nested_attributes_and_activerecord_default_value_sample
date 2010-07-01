@@ -1,0 +1,36 @@
+<h1>Editing user</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <% f.fields_for :todo do |todo_form| %>
+    <p>
+      <%= todo_form.label :title %><br />
+      <%= todo_form.text_field :title %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= f.label :age %><br />
+    <%= f.text_field :age %>
+  </p>
+
+  <% f.fields_for :todo do |todo_form| %>
+    <p>
+      <%= todo_form.label :body %><br />
+      <%= todo_form.text_field :body %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>
